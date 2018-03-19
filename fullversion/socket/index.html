@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+    <head>
+
+    </head>
+    <body>
+        <script src="/socket.io/socket.io.js"></script>
+
+        <script>
+         var url = "http://ec2-18-217-147-125.us-east-2.compute.amazonaws.com:8080/session3";
+         var socket = io.connect(url, { 'transports': ['websocket'] });
+         var name = "Test";
+
+         socket.on('connect', function(data) {
+            socket.emit('join', {name});
+         });
+
+         socket.on('question', function(data) {
+            var number = data.question;
+            console.log("question", number);
+            setTimeout(function(){
+              var i =2;
+              while(true){
+                if(number%i == 0){
+                  socket.emit('answer', {answer:i});
+                  console.log("answer", i);
+                  break;
+                }
+                i++;
+              }
+            }, 0);
+         });
+        </script>
+    </body>
+</html>

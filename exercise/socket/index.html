@@ -1,0 +1,16 @@
+<!doctype html>
+<html lang="en">
+    <head>
+
+    </head>
+    <body>
+        <script src="/socket.io/socket.io.js"></script>
+
+        <script>
+         var url = "http://ec2-18-217-147-125.us-east-2.compute.amazonaws.com:8080/session3";
+         var socket = io.connect(url, { 'transports': ['websocket'] });
+         var name = "Test";
+
+        </script>
+    </body>
+</html>
